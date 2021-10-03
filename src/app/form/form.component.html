@@ -1,0 +1,42 @@
+<mat-toolbar>
+  Website
+</mat-toolbar>
+
+<form [formGroup]="data" (ngSubmit)="submit()">
+
+  <mat-form-field appearance="fill">
+  <input matInput type="text" placeholder="Wirte your name" formControlName="name" >
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>
+      Put your age
+    </mat-label>
+    <input matInput type="number" placeholder="Age" formControlName="age">
+    <mat-hint *ngIf="data.controls?.age.touched && data.controls.age.invalid">
+      Max age is 99
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+  <input matInput type="date" formControlName="date">
+  </mat-form-field> 
+
+  <mat-form-field appearance="fill">
+    <mat-label>
+      Put your email
+    </mat-label>
+  <input matInput type="email" name="email" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label *ngIf="data.controls?.password.touched && data.value.password !== ''">
+      ur password
+    </mat-label>
+    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
+    <mat-hint>Enter your password</mat-hint>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary" [disabled]="data.invalid && true">Submit</button>
+  
+</form>
